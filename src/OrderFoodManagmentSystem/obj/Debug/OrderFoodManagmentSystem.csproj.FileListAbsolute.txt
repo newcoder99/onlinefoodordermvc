@@ -1,0 +1,10 @@
+C:\Users\vishals830\Documents\Visual Studio 2015\Projects\OnlineFoodOrderManagment\OrderFoodManagmentSystem\bin\Debug\OrderFoodManagmentSystem.dll.config
+C:\Users\vishals830\Documents\Visual Studio 2015\Projects\OnlineFoodOrderManagment\OrderFoodManagmentSystem\bin\Debug\OrderFoodManagmentSystem.dll
+C:\Users\vishals830\Documents\Visual Studio 2015\Projects\OnlineFoodOrderManagment\OrderFoodManagmentSystem\bin\Debug\OrderFoodManagmentSystem.pdb
+C:\Users\vishals830\Documents\Visual Studio 2015\Projects\OnlineFoodOrderManagment\OrderFoodManagmentSystem\bin\Debug\EntityFramework.dll
+C:\Users\vishals830\Documents\Visual Studio 2015\Projects\OnlineFoodOrderManagment\OrderFoodManagmentSystem\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\vishals830\Documents\Visual Studio 2015\Projects\OnlineFoodOrderManagment\OrderFoodManagmentSystem\bin\Debug\EntityFramework.xml
+C:\Users\vishals830\Documents\Visual Studio 2015\Projects\OnlineFoodOrderManagment\OrderFoodManagmentSystem\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\vishals830\Documents\Visual Studio 2015\Projects\OnlineFoodOrderManagment\OrderFoodManagmentSystem\obj\Debug\OrderFoodManagmentSystem.dll
+C:\Users\vishals830\Documents\Visual Studio 2015\Projects\OnlineFoodOrderManagment\OrderFoodManagmentSystem\obj\Debug\OrderFoodManagmentSystem.pdb
+C:\Users\vishals830\Documents\Visual Studio 2015\Projects\OnlineFoodOrderManagment\OrderFoodManagmentSystem\obj\Debug\OrderFoodManagmentSystem.csprojResolveAssemblyReference.cache

@@ -1,0 +1,136 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="OrderFoodManagementModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tblMenuItems">
+          <Key>
+            <PropertyRef Name="fooditemid" />
+          </Key>
+          <Property Name="fooditemid" Type="int" Nullable="false" />
+          <Property Name="foodname" Type="varchar(max)" />
+          <Property Name="price" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="isavailable" Type="bit" />
+        </EntityType>
+        <EntityType Name="tblRestaurants">
+          <Key>
+            <PropertyRef Name="restaurantID" />
+          </Key>
+          <Property Name="restaurantID" Type="int" Nullable="false" />
+          <Property Name="restaurantname" Type="varchar(max)" />
+          <Property Name="fooditemid" Type="int" />
+        </EntityType>
+        <Association Name="FK__tblRestau__foodi__1B0907CE">
+          <End Role="tblMenuItems" Type="Self.tblMenuItems" Multiplicity="0..1" />
+          <End Role="tblRestaurants" Type="Self.tblRestaurants" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblMenuItems">
+              <PropertyRef Name="fooditemid" />
+            </Principal>
+            <Dependent Role="tblRestaurants">
+              <PropertyRef Name="fooditemid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="OrderFoodManagementModelStoreContainer">
+          <EntitySet Name="tblMenuItems" EntityType="Self.tblMenuItems" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblRestaurants" EntityType="Self.tblRestaurants" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__tblRestau__foodi__1B0907CE" Association="Self.FK__tblRestau__foodi__1B0907CE">
+            <End Role="tblMenuItems" EntitySet="tblMenuItems" />
+            <End Role="tblRestaurants" EntitySet="tblRestaurants" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="OrderFoodManagementModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="tblMenuItem">
+          <Key>
+            <PropertyRef Name="fooditemid" />
+          </Key>
+          <Property Name="fooditemid" Type="Int32" Nullable="false" />
+          <Property Name="foodname" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tblRestaurants" Relationship="OrderFoodManagementModel.FK__tblRestau__foodi__1B0907CE" FromRole="tblMenuItem" ToRole="tblRestaurant" />
+          <Property Name="price" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="isavailable" Type="Boolean" />
+        </EntityType>
+        <EntityContainer Name="OrderFoodManagementEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tblMenuItems" EntityType="Self.tblMenuItem" />
+          <EntitySet Name="tblRestaurants" EntityType="OrderFoodManagementModel.tblRestaurant" />
+          <AssociationSet Name="FK__tblRestau__foodi__1B0907CE" Association="OrderFoodManagementModel.FK__tblRestau__foodi__1B0907CE">
+            <End Role="tblMenuItem" EntitySet="tblMenuItems" />
+            <End Role="tblRestaurant" EntitySet="tblRestaurants" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="tblRestaurant">
+          <Key>
+            <PropertyRef Name="restaurantID" />
+          </Key>
+          <Property Name="restaurantID" Type="Int32" Nullable="false" />
+          <Property Name="restaurantname" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="fooditemid" Type="Int32" />
+          <NavigationProperty Name="tblMenuItem" Relationship="OrderFoodManagementModel.FK__tblRestau__foodi__1B0907CE" FromRole="tblRestaurant" ToRole="tblMenuItem" />
+        </EntityType>
+        <Association Name="FK__tblRestau__foodi__1B0907CE">
+          <End Type="OrderFoodManagementModel.tblMenuItem" Role="tblMenuItem" Multiplicity="0..1" />
+          <End Type="OrderFoodManagementModel.tblRestaurant" Role="tblRestaurant" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblMenuItem">
+              <PropertyRef Name="fooditemid" />
+            </Principal>
+            <Dependent Role="tblRestaurant">
+              <PropertyRef Name="fooditemid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="OrderFoodManagementModelStoreContainer" CdmEntityContainer="OrderFoodManagementEntities">
+          <EntitySetMapping Name="tblMenuItems">
+            <EntityTypeMapping TypeName="OrderFoodManagementModel.tblMenuItem">
+              <MappingFragment StoreEntitySet="tblMenuItems">
+                <ScalarProperty Name="isavailable" ColumnName="isavailable" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="fooditemid" ColumnName="fooditemid" />
+                <ScalarProperty Name="foodname" ColumnName="foodname" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblRestaurants">
+            <EntityTypeMapping TypeName="OrderFoodManagementModel.tblRestaurant">
+              <MappingFragment StoreEntitySet="tblRestaurants">
+                <ScalarProperty Name="fooditemid" ColumnName="fooditemid" />
+                <ScalarProperty Name="restaurantname" ColumnName="restaurantname" />
+                <ScalarProperty Name="restaurantID" ColumnName="restaurantID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

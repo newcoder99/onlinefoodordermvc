@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="OrderFoodManagementModelStoreContainer" CdmEntityContainer="OrderFoodManagementEntities">
+    <EntitySetMapping Name="tblMenuItems">
+      <EntityTypeMapping TypeName="OrderFoodManagementModel.tblMenuItem">
+        <MappingFragment StoreEntitySet="tblMenuItems">
+          <ScalarProperty Name="isavailable" ColumnName="isavailable" />
+          <ScalarProperty Name="price" ColumnName="price" />
+          <ScalarProperty Name="fooditemid" ColumnName="fooditemid" />
+          <ScalarProperty Name="foodname" ColumnName="foodname" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblRestaurants">
+      <EntityTypeMapping TypeName="OrderFoodManagementModel.tblRestaurant">
+        <MappingFragment StoreEntitySet="tblRestaurants">
+          <ScalarProperty Name="fooditemid" ColumnName="fooditemid" />
+          <ScalarProperty Name="restaurantname" ColumnName="restaurantname" />
+          <ScalarProperty Name="restaurantID" ColumnName="restaurantID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
